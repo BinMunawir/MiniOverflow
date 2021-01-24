@@ -1,12 +1,23 @@
 
-
-from InnerLayers.DomainLayer.DomainSpecificLanguage.QuestionStatus import QuestionStatus
-from InnerLayers.DomainLayer.DomainSpecificLanguage.Time import Time
-from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
-# from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
-from datetime import datetime
-import time
-
-print('hi')
+from InnerLayers.DomainLayer.DomainModels.Comment import Comment
+from OuterLayers.InfrastructureLayer.InMemoryDB.CommentsDB import CommentsDB
 
 
+# print('hi')
+
+
+
+
+
+
+
+
+
+
+
+# test InMemoryDB
+# commentDB = CommentsDB()
+# comment = Comment('123', 'hello')
+# commentDB.insert(99, None, comment)
+# commentDB.delete('123')
+# print(commentDB.questionComments)
