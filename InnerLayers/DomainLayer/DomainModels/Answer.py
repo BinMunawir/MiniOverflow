@@ -9,7 +9,7 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.Vote import Vote
 
 class Answer:
     def __init__(self, answerID, body):
-        self.commentID = UUID(answerID)
+        self.answerID = UUID(answerID)
         self.body = Body(body)
         self.createdAt = Time(time())
         self.votes = Vote(0)
