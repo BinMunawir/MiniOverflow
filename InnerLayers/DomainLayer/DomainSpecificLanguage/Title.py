@@ -2,5 +2,5 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.TextContent import TextConte
 
 
 class Title(TextContent):
-    def __init__(self, name):
-        super(Title, self).__init__(70, name)
+    def __init__(self, content):
+        super(Title, self).__init__(70, content)
