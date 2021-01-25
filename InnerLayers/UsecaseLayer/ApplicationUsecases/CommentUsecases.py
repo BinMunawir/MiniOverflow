@@ -6,5 +6,9 @@ from InnerLayers.UsecaseLayer.services.UUIDGenerator import UUIDGenerator
 
 
 def getAllOfQuestion(db: Repositories, commentDTO: CommentDTO):
-    return db.answerRepository.fetch([commentDTO.questionID])
+    return db.commentRepository.fetch([commentDTO.questionID])
+
+
+def getAllOfAnswer(db: Repositories, commentDTO: CommentDTO):
+    return db.commentRepository.fetch(filteredByAnswerIDs=[commentDTO.answerID])
 
