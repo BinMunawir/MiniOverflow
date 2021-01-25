@@ -9,3 +9,9 @@ from InnerLayers.UsecaseLayer.services.UUIDGenerator import UUIDGenerator
 def getAll(db: Repositories):
     return db.answerRepository.fetch()
 
+
+def create(db: Repositories, answerDTO: AnswerDTO) -> None:
+    # Authentication().authenticate('userToken')
+    uuid = UUIDGenerator().generate()
+    answer = Answer(uuid, answerDTO.body)
+    db.answerRepository.insert(answer)
