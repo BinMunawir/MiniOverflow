@@ -24,3 +24,6 @@ def commentOnAnswer(db: Repositories, commentDTO: CommentDTO) -> None:
     comment = Comment(uuid, commentDTO.body)
     db.commentRepository.insert(None, commentDTO.answerID, comment)
 
+
+def delete(db: Repositories, commentDTO: CommentDTO) -> None:
+    db.commentRepository.delete(commentDTO.commentID)
