@@ -13,9 +13,14 @@ def getAllOfAnswer(db: Repositories, commentDTO: CommentDTO):
     return db.commentRepository.fetch(filteredByAnswerIDs=[commentDTO.answerID])
 
 
-def commentQuestion(db: Repositories, commentDTO: CommentDTO) -> None:
-    # Authentication().authenticate('userToken')
+def commentOnQuestion(db: Repositories, commentDTO: CommentDTO) -> None:
     uuid = UUIDGenerator().generate()
     comment = Comment(uuid, commentDTO.body)
-    db.commentRepository.insert(commentDTO.questionID)
+    db.commentRepository.insert(commentDTO.questionID, None, comment)
+
+
+def commentOnAnswer(db: Repositories, commentDTO: CommentDTO) -> None:
+    uuid = UUIDGenerator().generate()
+    comment = Comment(uuid, commentDTO.body)
+    db.commentRepository.insert(None, commentDTO.answerID, comment)
 
