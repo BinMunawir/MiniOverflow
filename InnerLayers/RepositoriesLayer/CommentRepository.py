@@ -8,7 +8,7 @@ class CommentRepository:
                     filteredByStatuses):
         pass
 
-    def update(self, newBody, newStatus):
+    def update(self, newComment):
         pass
 
     def delete(self, commentID):

@@ -7,7 +7,7 @@ class AnswerRepository:
     def fetch(self, filteredByQuestionIDs, filteredByUUIDs, filteredByTime, filteredByVote, filteredByStatuses):
         pass
 
-    def update(self, newBody, newStatus):
+    def update(self, newAnswer):
         pass
 
     def delete(self, answerID):

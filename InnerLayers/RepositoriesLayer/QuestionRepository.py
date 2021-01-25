@@ -6,7 +6,7 @@ class QuestionRepository:
               filteredByAnswered, filteredByTags):
         pass
 
-    def update(self, newTitle, newBody, newStatus, newTags):
+    def update(self, newQuestion):
         pass
 
     def delete(self, questionID):
