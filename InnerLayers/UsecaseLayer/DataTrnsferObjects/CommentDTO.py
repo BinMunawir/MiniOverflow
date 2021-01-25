@@ -8,6 +8,7 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
 
 class CommentDTO:
     def __init__(self):
+        self.questionID = None
         self.commentID = None
         self.body = None
         self.createdAt = None
