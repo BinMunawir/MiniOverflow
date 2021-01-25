@@ -14,4 +14,7 @@ def create(db: Repositories, questionDTO: QuestionDTO) -> None:
     db.questionRepository.insert(question)
 
 
-
+def softDelete(db: Repositories, questionDTO: QuestionDTO) -> None:
+    question: Question = db.questionRepository.fetch([questionDTO.questionID])[0]
+    question.changeStatus(QuestionStatus.DELETED())
+    db.questionRepository.update(question)
