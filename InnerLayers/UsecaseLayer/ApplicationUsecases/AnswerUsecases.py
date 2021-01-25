@@ -15,3 +15,9 @@ def create(db: Repositories, answerDTO: AnswerDTO) -> None:
     uuid = UUIDGenerator().generate()
     answer = Answer(uuid, answerDTO.body)
     db.answerRepository.insert(answer)
+
+
+def softDelete(db: Repositories, answerDTO: AnswerDTO) -> None:
+    answer: Answer = db.answerRepository.fetch([answerDTO.answerID])[0]
+    answer.changeStatus(AnswerStatus.DELETED())
+    db.answerRepository.update(answer)
