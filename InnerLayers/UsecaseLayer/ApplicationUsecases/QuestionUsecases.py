@@ -4,6 +4,7 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.QuestionStatus import Questi
 from InnerLayers.RepositoriesLayer.Repositories import Repositories
 from InnerLayers.UsecaseLayer.DataTrnsferObjects.QuestionDTO import QuestionDTO
 from InnerLayers.UsecaseLayer.services.Authentication import Authentication
+from InnerLayers.UsecaseLayer.services.Services import Services
 from InnerLayers.UsecaseLayer.services.UUIDGenerator import UUIDGenerator
 
 
@@ -12,8 +13,8 @@ def getAll(db: Repositories):
 
 
 def create(db: Repositories, questionDTO: QuestionDTO) -> None:
-    # Authentication().authenticate('userToken')
-    uuid = UUIDGenerator().generate()
+    # Services().authentication().authenticate('userToken')
+    uuid = Services().uuidGenerator.generate()
     question = Question(uuid, questionDTO.title, questionDTO.body, questionDTO.tags)
     db.questionRepository.insert(question)
 
