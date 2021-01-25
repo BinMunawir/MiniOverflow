@@ -1,3 +1,4 @@
+from InnerLayers.DomainLayer.DomainModels.Answer import Answer
 from InnerLayers.DomainLayer.DomainModels.Question import Question
 from InnerLayers.DomainLayer.DomainSpecificLanguage.QuestionStatus import QuestionStatus
 from InnerLayers.RepositoriesLayer.QuestionRepository import QuestionRepository
@@ -18,3 +19,14 @@ def softDelete(db: Repositories, questionDTO: QuestionDTO) -> None:
     question: Question = db.questionRepository.fetch([questionDTO.questionID])[0]
     question.changeStatus(QuestionStatus.DELETED())
     db.questionRepository.update(question)
+
+
+def hardDelete(db: Repositories, questionDTO: QuestionDTO) -> None:
+    # implemented inefficiently
+    db.questionRepository.delete(questionDTO.questionID)
+    answers: [] = db.answerRepository.fetch([questionDTO.questionID])
+    for a in answers:
+        pass  # hard delete answer
+    comments: [] = db.commentRepository.fetch([questionDTO.questionID])
+    for a in comments:
+        pass  # hard delete comment
