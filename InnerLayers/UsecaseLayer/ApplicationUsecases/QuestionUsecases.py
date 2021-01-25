@@ -1,11 +1,14 @@
-from InnerLayers.DomainLayer.DomainModels.Answer import Answer
+
 from InnerLayers.DomainLayer.DomainModels.Question import Question
 from InnerLayers.DomainLayer.DomainSpecificLanguage.QuestionStatus import QuestionStatus
-from InnerLayers.RepositoriesLayer.QuestionRepository import QuestionRepository
 from InnerLayers.RepositoriesLayer.Repositories import Repositories
 from InnerLayers.UsecaseLayer.DataTrnsferObjects.QuestionDTO import QuestionDTO
 from InnerLayers.UsecaseLayer.services.Authentication import Authentication
 from InnerLayers.UsecaseLayer.services.UUIDGenerator import UUIDGenerator
+
+
+def getAll(db: Repositories):
+    return db.questionRepository.fetch()
 
 
 def create(db: Repositories, questionDTO: QuestionDTO) -> None:
