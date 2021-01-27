@@ -1,7 +1,9 @@
 from InnerLayers.DomainLayer.DomainModels.Answer import Answer
 from InnerLayers.DomainLayer.DomainModels.Comment import Comment
 from InnerLayers.DomainLayer.DomainSpecificLanguage.AnswerStatus import AnswerStatus
+from InnerLayers.DomainLayer.DomainSpecificLanguage.Time import Time
 from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
+from InnerLayers.DomainLayer.DomainSpecificLanguage.Vote import Vote
 from InnerLayers.RepositoriesLayer.Repositories import Repositories
 from InnerLayers.UsecaseLayer.ApplicationUsecases.CommentUsecases import deleteComment
 from InnerLayers.UsecaseLayer.DataTrnsferObjects.AnswerDTO import AnswerDTO
@@ -10,7 +12,12 @@ from InnerLayers.UsecaseLayer.Services.Services import Services
 
 def answerQuestion(questionID: UUID, answerDTO: AnswerDTO) -> None:
     uuid = Services.uuidGenerator.generate()
-    answer = Answer(uuid, answerDTO.body)
+    answer = Answer(answerID=uuid,
+                    body=answerDTO.body,
+                    createdAt=Time(),
+                    comments=[],
+                    status=AnswerStatus.PENDING(),
+                    votes=Vote(0))
     Repositories.answerRepository.save(questionID, answer)
 
 

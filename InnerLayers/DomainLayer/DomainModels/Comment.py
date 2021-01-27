@@ -7,11 +7,11 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
 
 
 class Comment:
-    def __init__(self, commentID, body):
-        self.commentID = UUID(commentID)
-        self.body = Body(body)
-        self.createdAt = Time(time())
-        self.status = CommentStatus.PENDING()
+    def __init__(self, commentID=None, body=None, createdAt=None, status=None):
+        self.commentID: UUID = commentID
+        self.body: Body = body
+        self.createdAt: Time = createdAt
+        self.status: CommentStatus = status
 
     def editBody(self, newBody):
         self.body = Body(newBody)

@@ -11,17 +11,18 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.Vote import Vote
 
 
 class Question:
-    def __init__(self, questionID, title, body, tags=[]):
-        self.questionID = UUID(questionID)
-        self.title = Title(title)
-        self.body = Body(body)
-        self.createdAt = Time(time())
-        self.votes = Vote(0)
-        self.tags = tags
-        self.bestAnswer = None
-        self.status = QuestionStatus.PENDING()
-        self.comments = []
-        self.answers = []
+    def __init__(self, questionID=None, title=None, body=None, createdAt=None, votes=None, tags=None, bestAnswer=None,
+                 status=None, comments=None, answers=None):
+        self.questionID: UUID = questionID
+        self.title: Title = title
+        self.body: Body = body
+        self.createdAt: Time = createdAt
+        self.votes: Vote = votes
+        self.tags: list = tags
+        self.bestAnswer: BestAnswer = bestAnswer
+        self.status: QuestionStatus = status
+        self.comments: list = comments
+        self.answers: list = answers
 
     def editTitle(self, newTitle):
         self.title = Title(newTitle)

@@ -2,7 +2,9 @@ from InnerLayers.DomainLayer.DomainModels.Answer import Answer
 from InnerLayers.DomainLayer.DomainModels.Comment import Comment
 from InnerLayers.DomainLayer.DomainModels.Question import Question
 from InnerLayers.DomainLayer.DomainSpecificLanguage.QuestionStatus import QuestionStatus
+from InnerLayers.DomainLayer.DomainSpecificLanguage.Time import Time
 from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
+from InnerLayers.DomainLayer.DomainSpecificLanguage.Vote import Vote
 from InnerLayers.RepositoriesLayer.Repositories import Repositories
 from InnerLayers.UsecaseLayer.ApplicationUsecases.AnswerUsecases import hardDeleteAnswer
 from InnerLayers.UsecaseLayer.ApplicationUsecases.CommentUsecases import deleteComment
@@ -12,7 +14,16 @@ from InnerLayers.UsecaseLayer.Services.Services import Services
 
 def askQuestion(questionDTO: QuestionDTO) -> None:
     uuid = Services.uuidGenerator.generate()
-    question = Question(uuid, questionDTO.title, questionDTO.body, questionDTO.tags)
+    question = Question(questionID=uuid,
+                        title=questionDTO.title,
+                        body=questionDTO.body,
+                        createdAt=Time(),
+                        votes=Vote(0),
+                        tags=questionDTO.tags if questionDTO.tags else [],
+                        bestAnswer=None,
+                        status=QuestionStatus.PENDING(),
+                        comments=questionDTO.comments if questionDTO.comments else [],
+                        answers=questionDTO.answers if questionDTO.answers else [])
     Repositories.questionRepository.save(question)
 
 

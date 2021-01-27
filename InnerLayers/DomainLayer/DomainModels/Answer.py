@@ -8,13 +8,13 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.Vote import Vote
 
 
 class Answer:
-    def __init__(self, answerID, body):
-        self.answerID = UUID(answerID)
-        self.body = Body(body)
-        self.createdAt = Time(time())
-        self.votes = Vote(0)
-        self.status = AnswerStatus.PENDING()
-        self.comments = []
+    def __init__(self, answerID=None, body=None, createdAt=None, votes=None, status=None, comments=None):
+        self.answerID: UUID = answerID
+        self.body: Body = body
+        self.createdAt: Time = createdAt
+        self.votes: Vote = votes
+        self.status: AnswerStatus = status
+        self.comments: list = comments
 
     def editBody(self, newBody):
         self.body = Body(newBody)

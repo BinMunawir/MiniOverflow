@@ -6,8 +6,8 @@ class AnswerRepository:
     def save(self, questionID: UUID, answer: Answer):
         pass
 
-    def fetch(self, filteredByQuestionIDs: list, filteredByUUIDs: list, filteredByTime: list, filteredByVote: list,
-              filteredByStatuses: list):
+    def fetch(self, filteredByQuestionIDs: list = None, filteredByUUIDs: list = None, filteredByTime: list = None,
+              filteredByVote: list = None, filteredByStatuses: list = None):
         pass
 
     def update(self, newAnswer: Answer):

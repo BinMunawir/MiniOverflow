@@ -6,8 +6,8 @@ class CommentRepository:
     def save(self, questionID: UUID, answerID: UUID, comment: Comment):
         pass
 
-    def fetch(self, filteredByQuestionIDs: list, filteredByAnswerIDs: list, filteredByUUIDs: list, filteredByTime: list,
-              filteredByVote: list, filteredByStatuses: list):
+    def fetch(self, filteredByQuestionIDs: list = None, filteredByAnswerIDs: list = None, filteredByUUIDs: list = None,
+              filteredByTime: list = None, filteredByVote: list = None, filteredByStatuses: list = None):
         pass
 
     def update(self, newComment: Comment):
