@@ -1,4 +1,5 @@
 from InnerLayers.DomainLayer.DomainModels.Question import Question
+from InnerLayers.DomainLayer.DomainSpecificLanguage.QuestionStatus import QuestionStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
 from InnerLayers.RepositoriesLayer.Repositories import Repositories
 from InnerLayers.UsecaseLayer.DataTrnsferObjects.QuestionDTO import QuestionDTO
@@ -20,3 +21,8 @@ def getQuestion(questionID: UUID) -> QuestionDTO:
     question: list = Repositories.questionRepository.fetch(filteredByUUIDs=[questionID])[0]
     return QuestionDTO.toDTO(question)
 
+
+def softDeleteQuestion(questionID: UUID) -> None:
+    question: Question = Repositories.questionRepository.fetch(filteredByUUIDs=[questionID])[0]
+    question.changeStatus(QuestionStatus.DELETED())
+    Repositories.questionRepository.update(question)
