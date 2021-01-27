@@ -10,3 +10,7 @@ def answerQuestion(questionID: UUID, answerDTO: AnswerDTO) -> None:
     answer = Answer(uuid, answerDTO.body)
     Repositories.answerRepository.save(questionID, answer)
 
+
+def getAnswersOfQuestion(questionID: UUID) -> list:
+    answers = Repositories.answerRepository.fetch(filteredByQuestionIDs=[questionID])
+    return AnswerDTO.toListOfDTO(answers)
