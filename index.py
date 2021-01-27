@@ -1,3 +1,4 @@
+import json
 import time
 from datetime import datetime
 
@@ -21,7 +22,14 @@ Services.initialize(uuidModel, None)
 request = HttpRequest("POST", 'api/questions')
 request.body = {'title': 'q1 title', 'body': 'q1 body'}
 response = router(request)
-print(888, response.body)
+print(999, response.body)
+request = HttpRequest("GET", 'api/questions')
+response = router(request)
+print(999, response.body)
+request = HttpRequest("GET", 'api/questions/:questionID')
+request.pathParams = {'questionID': json.loads(response.body)[0]['questionID']}
+response = router(request)
+print(999, response.body)
 request = HttpRequest("GET", 'api/questions')
 response = router(request)
 print(999, response.body)
