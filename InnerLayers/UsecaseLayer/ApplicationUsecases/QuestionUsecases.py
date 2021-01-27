@@ -1,7 +1,11 @@
+from InnerLayers.DomainLayer.DomainModels.Answer import Answer
+from InnerLayers.DomainLayer.DomainModels.Comment import Comment
 from InnerLayers.DomainLayer.DomainModels.Question import Question
 from InnerLayers.DomainLayer.DomainSpecificLanguage.QuestionStatus import QuestionStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
 from InnerLayers.RepositoriesLayer.Repositories import Repositories
+from InnerLayers.UsecaseLayer.ApplicationUsecases.AnswerUsecases import hardDeleteAnswer
+from InnerLayers.UsecaseLayer.ApplicationUsecases.CommentUsecases import deleteComment
 from InnerLayers.UsecaseLayer.DataTrnsferObjects.QuestionDTO import QuestionDTO
 from InnerLayers.UsecaseLayer.Services.Services import Services
 
@@ -26,3 +30,16 @@ def softDeleteQuestion(questionID: UUID) -> None:
     question: Question = Repositories.questionRepository.fetch(filteredByUUIDs=[questionID])[0]
     question.changeStatus(QuestionStatus.DELETED())
     Repositories.questionRepository.update(question)
+
+
+def hardDeleteQuestion(questionID: UUID) -> None:
+    question: Question = Repositories.questionRepository.fetch(filteredByUUIDs=[questionID])
+    answers: list = question.answers
+    for e in answers:
+        a: Answer = e
+        hardDeleteAnswer(a.answerID)
+    comments: list = question.comments
+    for e in comments:
+        c: Comment = e
+        deleteComment(c.commentID)
+    Repositories.questionRepository.delete(questionID)
