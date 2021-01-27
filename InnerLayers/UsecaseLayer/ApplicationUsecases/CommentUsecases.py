@@ -25,3 +25,7 @@ def getQuestionComments(questionID: UUID) -> list:
 def getAnswerComments(answerID: UUID) -> list:
     comments = Repositories.commentRepository.fetch(filteredByQuestionIDs=[answerID])
     return CommentDTO.toListOfDTO(comments)
+
+
+def deleteComment(commentID: UUID) -> None:
+    Repositories.commentRepository.delete(commentID)
