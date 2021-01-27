@@ -39,9 +39,11 @@ class QuestionDTO(Serializable):
         if self.votes: result[f'{self.votes=}'.split('=')[0].split('.')[1]] = self.votes.toRepresent()
         if self.status: result[f'{self.status=}'.split('=')[0].split('.')[1]] = self.status.toRepresent()
 
-        if self.tags: result[f'{self.tags=}'.split('=')[0].split('.')[1]] = TagDTO.toListOfMap(self.tags)
-        if self.answers: result[f'{self.answers=}'.split('=')[0].split('.')[1]] = AnswerDTO.toListOfMap(self.answers)
-        if self.comments: result[f'{self.comments=}'.split('=')[0].split('.')[1]] = CommentDTO.toListOfMap(
+        print(33, self.tags)
+        if self.tags is not None: result[f'{self.tags=}'.split('=')[0].split('.')[1]] = TagDTO.toListOfMap(self.tags)
+        print(44, result['tags'])
+        if self.answers is not None: result[f'{self.answers=}'.split('=')[0].split('.')[1]] = AnswerDTO.toListOfMap(self.answers)
+        if self.comments is not None: result[f'{self.comments=}'.split('=')[0].split('.')[1]] = CommentDTO.toListOfMap(
             self.comments)
 
         return result

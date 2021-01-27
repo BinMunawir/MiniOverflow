@@ -28,7 +28,7 @@ class AnswerDTO(Serializable):
         if self.votes: result[f'{self.votes=}'.split('=')[0].split('.')[1]] = self.votes.toRepresent()
         if self.status: result[f'{self.status=}'.split('=')[0].split('.')[1]] = self.status.toRepresent()
 
-        if self.comments: result[f'{self.comments=}'.split('=')[0].split('.')[1]] = CommentDTO.toListOfMap(
+        if self.comments is not None: result[f'{self.comments=}'.split('=')[0].split('.')[1]] = CommentDTO.toListOfMap(
             self.comments)
 
         return result
