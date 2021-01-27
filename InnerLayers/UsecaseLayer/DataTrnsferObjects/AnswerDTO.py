@@ -1,5 +1,6 @@
 from time import time
 
+from InnerLayers.DomainLayer.DomainModels.Answer import Answer
 from InnerLayers.DomainLayer.DomainSpecificLanguage.AnswerStatus import AnswerStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Body import Body
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Time import Time
@@ -31,3 +32,20 @@ class AnswerDTO(Serializable):
             self.comments)
 
         return result
+
+    @staticmethod
+    def toDTO(answer: Answer):
+        dto: AnswerDTO = AnswerDTO()
+
+        dto.answerID = answer.answerID
+        dto.body = answer.body
+        dto.createdAt = answer.createdAt
+        dto.votes = answer.votes
+        dto.status = answer.status
+        dto.comments = answer.comments
+
+        return dto
+
+    @staticmethod
+    def toListOfDTO(answers: list):
+        return [AnswerDTO.toDTO(a) for a in answers]

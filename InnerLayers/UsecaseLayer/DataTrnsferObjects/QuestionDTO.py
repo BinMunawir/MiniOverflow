@@ -1,5 +1,6 @@
 from time import time
 
+from InnerLayers.DomainLayer.DomainModels.Question import Question
 from InnerLayers.DomainLayer.DomainSpecificLanguage.AnswerStatus import AnswerStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.BestAnswer import BestAnswer
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Body import Body
@@ -40,6 +41,28 @@ class QuestionDTO(Serializable):
 
         if self.tags: result[f'{self.tags=}'.split('=')[0].split('.')[1]] = TagDTO.toListOfMap(self.tags)
         if self.answers: result[f'{self.answers=}'.split('=')[0].split('.')[1]] = AnswerDTO.toListOfMap(self.answers)
-        if self.comments: result[f'{self.comments=}'.split('=')[0].split('.')[1]] = CommentDTO.toListOfMap(self.comments)
+        if self.comments: result[f'{self.comments=}'.split('=')[0].split('.')[1]] = CommentDTO.toListOfMap(
+            self.comments)
 
         return result
+
+    @staticmethod
+    def toDTO(question: Question):
+        dto: QuestionDTO = QuestionDTO()
+
+        dto.questionID = question.questionID
+        dto.title = question.title
+        dto.bestAnswer = question.bestAnswer
+        dto.body = question.body
+        dto.createdAt = question.createdAt
+        dto.votes = question.votes
+        dto.status = question.status
+        dto.tags = question.tags
+        dto.answers = question.answers
+        dto.comments = question.comments
+
+        return dto
+
+    @staticmethod
+    def toListOfDTO(questions: list):
+        return [QuestionDTO.toDTO(q) for q in questions]

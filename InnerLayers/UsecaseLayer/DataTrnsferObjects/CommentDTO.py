@@ -1,5 +1,6 @@
 from time import time
 
+from InnerLayers.DomainLayer.DomainModels.Comment import Comment
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Body import Body
 from InnerLayers.DomainLayer.DomainSpecificLanguage.CommentStatus import CommentStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Time import Time
@@ -23,3 +24,18 @@ class CommentDTO(Serializable):
         if self.status: result[f'{self.status=}'.split('=')[0].split('.')[1]] = self.status.toRepresent()
 
         return result
+
+    @staticmethod
+    def toDTO(comment: Comment):
+        dto: CommentDTO = CommentDTO()
+
+        dto.commentID = comment.commentID
+        dto.body = comment.body
+        dto.createdAt = comment.createdAt
+        dto.status = comment.status
+
+        return dto
+
+    @staticmethod
+    def toListOfDTO(comments: list):
+        return [CommentDTO.toDTO(c) for c in comments]

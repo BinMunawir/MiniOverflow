@@ -1,5 +1,6 @@
 from time import time
 
+from InnerLayers.DomainLayer.DomainModels.Tag import Tag
 from InnerLayers.DomainLayer.DomainSpecificLanguage.AnswerStatus import AnswerStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Body import Body
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Name import Name
@@ -23,3 +24,13 @@ class TagDTO(Serializable):
         if self.createdAt: result[f'{self.createdAt=}'.split('=')[0].split('.')[1]] = self.createdAt.toRepresent()
 
         return result
+
+    @staticmethod
+    def toDTO(tag: Tag):
+        dto: TagDTO = TagDTO()
+
+        dto.tagID = tag.tagID
+        dto.name = tag.name
+        dto.createdAt = tag.createdAt
+
+        return dto
