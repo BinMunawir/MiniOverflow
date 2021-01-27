@@ -16,3 +16,6 @@ class Vote:
 
     def isMoreThan(self, another):
         return self.COUNTER > another.COUNTER
+
+    def toRepresent(self):
+        return self.COUNTER

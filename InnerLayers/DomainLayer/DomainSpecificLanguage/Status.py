@@ -5,3 +5,6 @@ class Status:
 
     def isSameAs(self, another):
         return type(self) == type(another) & self.NAME == self.NAME
+
+    def toRepresent(self):
+        return self.NAME

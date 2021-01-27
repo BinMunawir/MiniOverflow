@@ -5,3 +5,6 @@ class TextContent:
 
     def _isSameAs(self, another):
         return type(self) == type(another) & self.CONTENT == another.CONTENT
+
+    def toRepresent(self):
+        return self.CONTENT

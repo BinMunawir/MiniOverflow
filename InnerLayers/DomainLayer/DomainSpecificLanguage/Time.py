@@ -21,3 +21,6 @@ class Time:
 
     def isMoreThan(self, another):
         return self.UNIX_TIME > another.UNIX_TIME
+
+    def toRepresent(self):
+        return str(self.UNIX_TIME)
