@@ -5,14 +5,14 @@ from InnerLayers.RepositoriesLayer.TagRepository import TagRepository
 
 
 class Repositories:
-    def __init__(self):
-        self.questionRepository: QuestionRepository = None
-        self.answerRepository: AnswerRepository = None
-        self.commentRepository: CommentRepository = None
-        self.tagRepository: TagRepository = None
+    questionRepository: QuestionRepository = None
+    answerRepository: AnswerRepository = None
+    commentRepository: CommentRepository = None
+    tagRepository: TagRepository = None
 
-    def initialize(self, questionRepository, answerRepository, commentRepository, tagRepository):
-        self.questionRepository = questionRepository
-        self.answerRepository = answerRepository
-        self.commentRepository = commentRepository
-        self.tagRepository = tagRepository
+    @staticmethod
+    def initialize(questionRepository, answerRepository, commentRepository, tagRepository):
+        Repositories.questionRepository = questionRepository
+        Repositories.answerRepository = answerRepository
+        Repositories.commentRepository = commentRepository
+        Repositories.tagRepository = tagRepository

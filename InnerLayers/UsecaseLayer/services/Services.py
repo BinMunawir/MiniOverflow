@@ -3,10 +3,10 @@ from InnerLayers.UsecaseLayer.services.UUIDGenerator import UUIDGenerator
 
 
 class Services:
-    def __init__(self):
-        self.uuidGenerator: UUIDGenerator = None
-        self.authentication: Authentication = None
+    uuidGenerator: UUIDGenerator = None
+    authentication: Authentication = None
 
-    def initialize(self, uuidGenerator: UUIDGenerator, authentication: Authentication):
-        self.uuidGenerator = uuidGenerator
-        self.authentication = authentication
+    @staticmethod
+    def initialize(uuidGenerator: UUIDGenerator, authentication: Authentication):
+        Services.uuidGenerator = uuidGenerator
+        Services.authentication = authentication
