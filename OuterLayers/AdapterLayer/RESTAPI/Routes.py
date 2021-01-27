@@ -3,6 +3,7 @@ import json
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.AskQuestion import AskQuestion
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.GetQuestion import GetQuestion
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.GetQuestions import GetQuestions
+from OuterLayers.AdapterLayer.RESTAPI.Endpoints.DeleteQuestion import DeleteQuestion
 from OuterLayers.AdapterLayer.RESTAPI.HttpRequest import HttpRequest
 from OuterLayers.AdapterLayer.RESTAPI.HttpResponse import HttpResponse
 
@@ -21,6 +22,10 @@ def router(request: HttpRequest) -> HttpResponse:
         return response
     if request.method == "POST" and request.path == "/api/questions/":
         endpoint: AskQuestion = AskQuestion(request)
+        response = endpoint.handle()
+        return response
+    if request.method == "DELETE" and request.path == "/api/questions/:questionID/":
+        endpoint: DeleteQuestion = DeleteQuestion(request)
         response = endpoint.handle()
         return response
     return HttpResponse(404, {'Content-Type': 'application/json'}, json.dumps({'code': 1111, 'msg': 'Source Not Found'}))
