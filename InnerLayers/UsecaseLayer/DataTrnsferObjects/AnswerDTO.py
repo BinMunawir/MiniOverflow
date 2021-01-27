@@ -11,12 +11,12 @@ from InnerLayers.UsecaseLayer.services.Serializable import Serializable
 
 class AnswerDTO(Serializable):
     def __init__(self):
-        self.answerID = None
-        self.body = None
-        self.createdAt = None
-        self.votes = None
-        self.status = None
-        self.comments = None
+        self.answerID: UUID = None
+        self.body: Body = None
+        self.createdAt: Time = None
+        self.votes: Vote = None
+        self.status: AnswerStatus = None
+        self.comments: list = None
 
     def toMap(self) -> dict:
         result = {}

@@ -9,10 +9,10 @@ from InnerLayers.UsecaseLayer.services.Serializable import Serializable
 
 class CommentDTO(Serializable):
     def __init__(self):
-        self.commentID = None
-        self.body = None
-        self.createdAt = None
-        self.status = None
+        self.commentID: UUID = None
+        self.body: Body = None
+        self.createdAt: Time = None
+        self.status: CommentStatus = None
 
     def toMap(self) -> dict:
         result = {}

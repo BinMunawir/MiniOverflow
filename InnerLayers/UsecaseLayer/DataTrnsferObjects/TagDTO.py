@@ -2,6 +2,7 @@ from time import time
 
 from InnerLayers.DomainLayer.DomainSpecificLanguage.AnswerStatus import AnswerStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Body import Body
+from InnerLayers.DomainLayer.DomainSpecificLanguage.Name import Name
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Time import Time
 from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Vote import Vote
@@ -10,9 +11,9 @@ from InnerLayers.UsecaseLayer.services.Serializable import Serializable
 
 class TagDTO(Serializable):
     def __init__(self):
-        self.taqID = None
-        self.name = None
-        self.createdAt = None
+        self.taqID: UUID = None
+        self.name: Name = None
+        self.createdAt: Time = None
 
     def toMap(self) -> dict:
         result = {}

@@ -16,16 +16,16 @@ from InnerLayers.UsecaseLayer.services.Serializable import Serializable
 
 class QuestionDTO(Serializable):
     def __init__(self):
-        self.questionID = None
-        self.title = None
-        self.bestAnswer = None
-        self.body = None
-        self.createdAt = None
-        self.votes = None
-        self.status = None
-        self.tags = None
-        self.answers = None
-        self.comments = None
+        self.questionID: UUID = None
+        self.title: Title = None
+        self.bestAnswer: BestAnswer = None
+        self.body: Body = None
+        self.createdAt: Time = None
+        self.votes: Vote = None
+        self.status: QuestionStatus = None
+        self.tags: list = None
+        self.answers: list = None
+        self.comments: list = None
 
     def toMap(self) -> dict:
         result = {}
