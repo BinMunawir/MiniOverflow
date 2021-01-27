@@ -1,5 +1,5 @@
-from InnerLayers.UsecaseLayer.services.Authentication import Authentication
-from InnerLayers.UsecaseLayer.services.UUIDGenerator import UUIDGenerator
+from InnerLayers.UsecaseLayer.Services.Authentication import Authentication
+from InnerLayers.UsecaseLayer.Services.UUIDGenerator import UUIDGenerator
 
 
 class Services:

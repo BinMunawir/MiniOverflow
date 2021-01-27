@@ -11,7 +11,7 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.Vote import Vote
 from InnerLayers.UsecaseLayer.DataTrnsferObjects.AnswerDTO import AnswerDTO
 from InnerLayers.UsecaseLayer.DataTrnsferObjects.CommentDTO import CommentDTO
 from InnerLayers.UsecaseLayer.DataTrnsferObjects.TagDTO import TagDTO
-from InnerLayers.UsecaseLayer.services.Serializable import Serializable
+from InnerLayers.UsecaseLayer.Services.Serializable import Serializable
 
 
 class QuestionDTO(Serializable):

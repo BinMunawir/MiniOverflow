@@ -7,9 +7,9 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Vote import Vote
 
 
-class Taq:
-    def __init__(self, taqID, name):
-        self.taqID = taqID
+class Tag:
+    def __init__(self, tagID, name):
+        self.tagID = tagID
         self.name = name
         self.createdAt = Time(time())
         self.questions = []

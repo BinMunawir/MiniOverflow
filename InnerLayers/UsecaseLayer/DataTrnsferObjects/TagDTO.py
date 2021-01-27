@@ -6,7 +6,7 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.Name import Name
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Time import Time
 from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Vote import Vote
-from InnerLayers.UsecaseLayer.services.Serializable import Serializable
+from InnerLayers.UsecaseLayer.Services.Serializable import Serializable
 
 
 class TagDTO(Serializable):

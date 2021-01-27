@@ -4,7 +4,7 @@ from InnerLayers.DomainLayer.DomainSpecificLanguage.Body import Body
 from InnerLayers.DomainLayer.DomainSpecificLanguage.CommentStatus import CommentStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Time import Time
 from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
-from InnerLayers.UsecaseLayer.services.Serializable import Serializable
+from InnerLayers.UsecaseLayer.Services.Serializable import Serializable
 
 
 class CommentDTO(Serializable):
