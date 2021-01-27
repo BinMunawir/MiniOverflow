@@ -2,8 +2,12 @@ import json
 
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.AnswerQuestion import AnswerQuestion
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.AskQuestion import AskQuestion
+from OuterLayers.AdapterLayer.RESTAPI.Endpoints.CommentOnAnswer import CommentOnAnswer
+from OuterLayers.AdapterLayer.RESTAPI.Endpoints.CommentOnQuestion import CommentOnQuestion
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.DeleteAnswer import DeleteAnswer
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.GetAnswersOfQuestion import GetAnswersOfQuestion
+from OuterLayers.AdapterLayer.RESTAPI.Endpoints.GetCommentsOfAnswer import GetCommentsOfAnswer
+from OuterLayers.AdapterLayer.RESTAPI.Endpoints.GetCommentsOfQuestion import GetCommentsOfQuestion
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.GetQuestion import GetQuestion
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.GetQuestions import GetQuestions
 from OuterLayers.AdapterLayer.RESTAPI.Endpoints.DeleteQuestion import DeleteQuestion
@@ -41,6 +45,22 @@ def router(request: HttpRequest) -> HttpResponse:
         return response
     if request.method == "DELETE" and request.path == "/api/questions/:questionID/answers/:answerID/":
         endpoint = DeleteAnswer(request)
+        response = endpoint.handle()
+        return response
+    if request.method == "POST" and request.path == "/api/questions/:questionID/comments/":
+        endpoint = CommentOnQuestion(request)
+        response = endpoint.handle()
+        return response
+    if request.method == "POST" and request.path == "/api/questions/:questionID/answers/:answerID/comments/":
+        endpoint = CommentOnAnswer(request)
+        response = endpoint.handle()
+        return response
+    if request.method == "GET" and request.path == "/api/questions/:questionID/comments/":
+        endpoint = GetCommentsOfQuestion(request)
+        response = endpoint.handle()
+        return response
+    if request.method == "GET" and request.path == "/api/questions/:questionID/answers/:answerID/comments/":
+        endpoint = GetCommentsOfAnswer(request)
         response = endpoint.handle()
         return response
     return HttpResponse(404, {'Content-Type': 'application/json'}, json.dumps({'code': 1111, 'msg': 'Source Not Found'}))

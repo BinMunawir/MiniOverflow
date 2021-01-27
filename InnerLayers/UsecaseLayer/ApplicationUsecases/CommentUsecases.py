@@ -18,7 +18,10 @@ def commentOnQuestion(questionID: UUID, commentDTO: CommentDTO) -> None:
 
 def commentOnAnswer(answerID: UUID, commentDTO: CommentDTO) -> None:
     uuid = Services.uuidGenerator.generate()
-    comment = Comment(uuid, commentDTO.body)
+    comment = Comment(commentID=uuid,
+                      createdAt=Time(),
+                      body=commentDTO.body,
+                      status=CommentStatus.PENDING())
     Repositories.commentRepository.save(None, answerID, comment)
 
 
@@ -28,7 +31,7 @@ def getQuestionComments(questionID: UUID) -> list:
 
 
 def getAnswerComments(answerID: UUID) -> list:
-    comments = Repositories.commentRepository.fetch(filteredByQuestionIDs=[answerID])
+    comments = Repositories.commentRepository.fetch(filteredByAnswerIDs=[answerID])
     return CommentDTO.toListOfDTO(comments)
 
 
