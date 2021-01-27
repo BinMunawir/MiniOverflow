@@ -16,5 +16,5 @@ class GetQuestions(Endpoint):
     def handle(self) -> HttpResponse:
         result = getQuestions()
         result = QuestionDTO.toListOfMap(result)
-        response: HttpResponse = HttpResponse({'Content-Type': 'application/json'}, json.dumps(result))
+        response: HttpResponse = HttpResponse(200, {'Content-Type': 'application/json'}, json.dumps(result))
         return response

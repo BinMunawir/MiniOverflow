@@ -1,5 +1,5 @@
 from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
-from InnerLayers.UsecaseLayer.services.UUIDGenerator import UUIDGenerator
+from InnerLayers.UsecaseLayer.Services.UUIDGenerator import UUIDGenerator
 import uuid
 
 
