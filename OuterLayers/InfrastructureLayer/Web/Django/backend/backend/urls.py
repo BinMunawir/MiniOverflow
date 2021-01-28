@@ -18,10 +18,22 @@ import sys
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 
+sys.path.append('../../../../..')
+import index
+def prepare(req, questionID=None, answerID=None, commentID=None):
+    return index.djangoInputs(req, questionID, answerID, commentID)
 
 
-from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
+    path('api/', prepare),
+    path('api/questions', prepare),
+    path('api/questions/<str:questionID>', prepare),
+    path('api/questions/<str:questionID>/comments', prepare),
+    path('api/questions/<str:questionID>/comments/<str:commentID>', prepare),
+    path('api/questions/<str:questionID>/answers', prepare),
+    path('api/questions/<str:questionID>/answers/<str:answerID>', prepare),
+    path('api/questions/<str:questionID>/answers/<str:answerID>/comments', prepare),
+    path('api/questions/<str:questionID>/answers/<str:answerID>/comments/<str:commentID>', prepare),
 ]

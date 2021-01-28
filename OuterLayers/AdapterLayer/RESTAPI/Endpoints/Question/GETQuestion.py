@@ -22,8 +22,11 @@ class GETQuestion(Endpoint):
         except Exception as e:
             raise HttpException(1111, 'questionID is required')
 
-        questionsMap = getQuestion(UUID(questionID))
-        questionsMap = QuestionDTO.toMap(questionsMap)
+        try:
+            questionsMap = getQuestion(UUID(questionID))
+            questionsMap = QuestionDTO.toMap(questionsMap)
+        except Exception as e:
+            raise HttpException(1111, 'no question by that ID')
 
         for i, a in enumerate(questionsMap['answers']):
             questionsMap['answers'][i] = a['answerID']

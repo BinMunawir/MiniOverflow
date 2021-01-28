@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc7516f5-a2dc-41e8-b99a-9d26afa050f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.idea/backend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/backend/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/backend/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/backend/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/backend/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/backend/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../.idea/MiniOverflow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.idea/MiniOverflow.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../AdapterLayer/RESTAPI/Endpoints/Question/GETQuestion.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../AdapterLayer/RESTAPI/Endpoints/Question/GETQuestion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../index.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../index.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

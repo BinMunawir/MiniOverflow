@@ -1,5 +1,8 @@
 import json
 
+from django.core.handlers.wsgi import WSGIRequest
+from django.http import HttpResponse
+
 from InnerLayers.RepositoriesLayer.Repositories import Repositories
 from InnerLayers.UsecaseLayer.Services.Services import Services
 from OuterLayers.AdapterLayer.InternalServices.UUIDModel import UUIDModel
@@ -16,6 +19,32 @@ cr = CommentsDB()
 Repositories.initialize(qr, ar, cr, None)
 uuidModel = UUIDModel()
 Services.initialize(uuidModel, None)
+
+
+def djangoInputs(req: WSGIRequest, questionID, answerID, commentID):
+    request = HttpRequest()
+    request.headers = {}
+    request.body = {}
+
+    if 'title' in req.POST: request.body['title'] = req.POST['title']
+    if 'body' in req.POST: request.body['body'] = req.POST['body']
+    if questionID is not None:
+        request.pathParams['questionID'] = questionID
+        req.path = str(req.path).replace(str(questionID), ':questionID')
+    if answerID is not None:
+        request.pathParams['answerID'] = answerID
+        req.path = str(req.path).replace(str(answerID), ':answerID')
+    if commentID is not None:
+        request.pathParams['commentID'] = commentID
+        req.path = str(req.path).replace(str(commentID), ':commentID')
+    if req.method == 'DELETE' and req.headers.get('hard') is not None: request.headers['hard'] = 'yes'
+
+    response = router(req.method, req.path, request)
+    res = HttpResponse(status=response.status,
+                       content_type='application/json',
+                       content=response.body if response.body is not None else {}
+                       )
+    return res
 
 
 def runEndpoints():
