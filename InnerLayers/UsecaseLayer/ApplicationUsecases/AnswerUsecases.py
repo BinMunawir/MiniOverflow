@@ -1,5 +1,6 @@
 from InnerLayers.DomainLayer.DomainModels.Answer import Answer
 from InnerLayers.DomainLayer.DomainModels.Comment import Comment
+from InnerLayers.DomainLayer.DomainModels.Question import Question
 from InnerLayers.DomainLayer.DomainSpecificLanguage.AnswerStatus import AnswerStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.Time import Time
 from InnerLayers.DomainLayer.DomainSpecificLanguage.UUID import UUID
@@ -19,6 +20,9 @@ def answerQuestion(questionID: UUID, answerDTO: AnswerDTO) -> None:
                     status=AnswerStatus.PENDING(),
                     votes=Vote(0))
     Repositories.answerRepository.save(questionID, answer)
+    question: Question = Repositories.questionRepository.fetch(filteredByUUIDs=[questionID])[0]
+    question.answers.append(answer)
+    Repositories.questionRepository.update(question)
 
 
 def getAnswersOfQuestion(questionID: UUID) -> list:

@@ -1,5 +1,6 @@
 from time import time
 
+from InnerLayers.DomainLayer.DomainModels.Answer import Answer
 from InnerLayers.DomainLayer.DomainModels.Question import Question
 from InnerLayers.DomainLayer.DomainSpecificLanguage.AnswerStatus import AnswerStatus
 from InnerLayers.DomainLayer.DomainSpecificLanguage.BestAnswer import BestAnswer
@@ -57,9 +58,20 @@ class QuestionDTO(Serializable):
         dto.createdAt = question.createdAt
         dto.votes = question.votes
         dto.status = question.status
-        dto.tags = question.tags
-        dto.answers = question.answers
-        dto.comments = question.comments
+        dto.tags = [] if question.tags is not None else None
+        if question.tags:
+            for a in question.tags:
+                dto.tags.append(TagDTO.toDTO(a))
+            dto.answers = [] if question.answers is not None else None
+        dto.answers = [] if question.answers is not None else None
+        if question.answers:
+            for a in question.answers:
+                dto.answers.append(AnswerDTO.toDTO(a))
+            dto.comments = [] if question.comments is not None else None
+        dto.comments = [] if question.comments is not None else None
+        if question.comments:
+            for a in question.comments:
+                dto.comments.append(CommentDTO.toDTO(a))
 
         return dto
 

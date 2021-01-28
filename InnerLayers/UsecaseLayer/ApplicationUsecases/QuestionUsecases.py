@@ -33,9 +33,8 @@ def getQuestions() -> list:
 
 
 def getQuestion(questionID: UUID) -> QuestionDTO:
-    question: list = Repositories.questionRepository.fetch(filteredByUUIDs=[questionID])
-    if len(question) == 0: return None
-    return QuestionDTO.toDTO(question[0])
+    question = Repositories.questionRepository.fetch(filteredByUUIDs=[questionID])[0]
+    return QuestionDTO.toDTO(question)
 
 
 def softDeleteQuestion(questionID: UUID) -> None:
@@ -45,7 +44,7 @@ def softDeleteQuestion(questionID: UUID) -> None:
 
 
 def hardDeleteQuestion(questionID: UUID) -> None:
-    question: Question = Repositories.questionRepository.fetch(filteredByUUIDs=[questionID])
+    question: Question = Repositories.questionRepository.fetch(filteredByUUIDs=[questionID])[0]
     answers: list = question.answers
     for e in answers:
         a: Answer = e

@@ -42,7 +42,10 @@ class AnswerDTO(Serializable):
         dto.createdAt = answer.createdAt
         dto.votes = answer.votes
         dto.status = answer.status
-        dto.comments = answer.comments
+        dto.comments = [] if answer.comments is not None else None
+        if answer.comments:
+            for a in answer.comments:
+                dto.comments.append(CommentDTO.toDTO(a))
 
         return dto
 
